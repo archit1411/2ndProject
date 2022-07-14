@@ -1,0 +1,14 @@
+---
+- hosts: test
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: "Creating a directory"
+      file:
+        path: /home/ansible/docker
+        state: directory
+    - name: "Copying Docker file"
+      copy:
+        src: /var/lib/jenkins/workspace/CICD/git-jenkins-ansible-docker
+        dest: /home/ansible/docker
+        mode: 0755
